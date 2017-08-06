@@ -1,0 +1,30 @@
+version: '3.3'
+
+services:
+  mongo:
+    image: mongo:3.2
+    volumes:
+      - mongo:/data/db
+    command: mongod --smallfiles
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+
+  app:
+    image: app:latest
+    ports:
+      - "80:3000"
+    deploy:
+      replicas: 1
+
+  api:
+    image: api:latest  
+    deploy:
+      replicas: 1
+
+volumes:
+  mongo:
