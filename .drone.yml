@@ -1,18 +1,18 @@
 pipeline:
-  # buid-docker: 
-  #   image: docker:17.04.0-ce
-  #   when:
-  #     event: push
-  #     branch: [master]
-  #   #privileged: true
-  #   volumes:
-  #     - /var/run/docker.sock:/var/run/docker.sock
-  #   commands:
-  #     - docker login --username=registry --password=d27537a15ebc54fcf606 registry.fsilva.me
-  #     - docker build -t registry.fsilva.me/app:1.0.${DRONE_BUILD_NUMBER} app
-  #     - docker build -t registry.fsilva.me/api:1.0.${DRONE_BUILD_NUMBER} api
-  #     - docker push registry.fsilva.me/app:1.0.${DRONE_BUILD_NUMBER}
-  #     - docker push registry.fsilva.me/api:1.0.${DRONE_BUILD_NUMBER}
+  buid-docker: 
+    image: docker:17.04.0-ce
+    when:
+      event: push
+      branch: [master]
+    privileged: true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    commands:
+      - docker login --username=registry --password=d27537a15ebc54fcf606 registry.fsilva.me
+      - docker build -t registry.fsilva.me/app:1.0.${DRONE_BUILD_NUMBER} app
+      - docker build -t registry.fsilva.me/api:1.0.${DRONE_BUILD_NUMBER} api
+      - docker push registry.fsilva.me/app:1.0.${DRONE_BUILD_NUMBER}
+      - docker push registry.fsilva.me/api:1.0.${DRONE_BUILD_NUMBER}
 
   deploy-containers: 
     image: docker:17.04.0-ce
@@ -20,7 +20,7 @@ pipeline:
       event: push
       branch: [master]
     environment:
-    - IMAGE_VERSION=1.0.8
+    - IMAGE_VERSION=1.0.${DRONE_BUILD_NUMBER}
     privileged: true
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock

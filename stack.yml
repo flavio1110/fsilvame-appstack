@@ -16,8 +16,6 @@ services:
 
   app:
     image: registry.fsilva.me/app:${IMAGE_VERSION}
-    ports:
-      - "80:3000"
     deploy:
       replicas: 1
 
