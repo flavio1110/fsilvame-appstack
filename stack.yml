@@ -15,14 +15,14 @@ services:
         window: 120s
 
   app:
-    image: app:latest
+    image: registry.fsilva.me/app:${IMAGE_VERSION}
     ports:
       - "80:3000"
     deploy:
       replicas: 1
 
   api:
-    image: api:latest  
+    image: registry.fsilva.me/api:${IMAGE_VERSION}
     deploy:
       replicas: 1
 
