@@ -22,7 +22,7 @@ services:
     ports:
       - 3000:3000
     deploy:
-      replicas: 2
+      replicas: 1
       update_config:
         parallelism: 1
         delay: 60s
@@ -33,7 +33,7 @@ services:
   api:
     image: registry.fsilva.me/api:${IMAGE_VERSION}
     deploy:
-      replicas: 2
+      replicas: 1
       update_config:
         parallelism: 1
         delay: 60s
