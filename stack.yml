@@ -22,7 +22,10 @@ services:
     ports:
       - 3000:3000
     deploy:
-      replicas: 1
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 60s
       placement:
         constraints:
           - node.labels.stack == app
@@ -30,7 +33,10 @@ services:
   api:
     image: registry.fsilva.me/api:${IMAGE_VERSION}
     deploy:
-      replicas: 1
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 60s
       placement:
         constraints:
           - node.labels.stack == app
