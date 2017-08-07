@@ -14,8 +14,8 @@ services:
         max_attempts: 3
         window: 120s
       placement:
-          constraints:
-            - node.labels.stack == app
+        constraints:
+          - node.labels.stack == app
 
   app:
     image: registry.fsilva.me/app:${IMAGE_VERSION}
@@ -23,7 +23,7 @@ services:
       - 3000:3000
     deploy:
       replicas: 1
-  placement:
+      placement:
         constraints:
           - node.labels.stack == app
 
@@ -32,8 +32,8 @@ services:
     deploy:
       replicas: 1
       placement:
-            constraints:
-              - node.labels.stack == app
+        constraints:
+          - node.labels.stack == app
 
 volumes:
   mongo:
