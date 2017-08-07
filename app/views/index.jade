@@ -10,10 +10,9 @@ html(lang="en")
     table#users
       tbody
         each user in users
-          tr(data-id=user._id)
-            td= user.name
-            td
-              button.btn-remove-user Remove
+          uo(data-id=user._id)
+            li=user.name 
+            li=button.btn-remove-user Remove              
 
     script(src="scripts.js")
 
