@@ -10,7 +10,7 @@ html(lang="en")
     table#users
       tbody
         each user in users
-          uo(data-id=user._id)
+          ul(data-id=user._id)
             li=user.name 
             li=button.btn-remove-user Remove              
 
