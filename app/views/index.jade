@@ -4,15 +4,16 @@ html(lang="en")
     title= pageTitle
   body
     div
-      h3 Add some names!!!
+      h4 Add some names!!!
       input#input-name(type="text" placeholder="Name")
       button#btn-add-user Add
     table#users
       tbody
         each user in users
-          ul(data-id=user._id)
-            li=user.name 
-            li=button.btn-remove-user Remove              
+          tr(data-id=user._id)
+            td= user.name
+            td
+              button.btn-remove-user Remove
 
     script(src="scripts.js")
 
