@@ -6,7 +6,7 @@ pipeline:
       branch: [master]
     #privileged: true
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sockg
+      - /var/run/docker.sock:/var/run/docker.sock
     commands:
       - docker login --username=registry --password=d27537a15ebc54fcf606 registry.fsilva.me
       - docker build -t registry.fsilva.me/app:1.0.${DRONE_BUILD_NUMBER} app
