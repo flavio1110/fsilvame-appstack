@@ -8,7 +8,7 @@ pipeline:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     commands:
-      - docker login --username=registry --password=${REGISTRY_PASSWORD} registry.fsilva.me
+      - docker login --username=registry --password=REGISTRY_PASSWORD registry.fsilva.me
       - docker build -t registry.fsilva.me/app:1.0.${DRONE_BUILD_NUMBER} app
       - docker build -t registry.fsilva.me/api:1.0.${DRONE_BUILD_NUMBER} api
       - docker push registry.fsilva.me/app:1.0.${DRONE_BUILD_NUMBER}
