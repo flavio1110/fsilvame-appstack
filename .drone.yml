@@ -15,6 +15,7 @@ pipeline:
       - docker build -t registry.fsilva.me/api:1.0.${DRONE_BUILD_NUMBER} api
       - docker push registry.fsilva.me/app:1.0.${DRONE_BUILD_NUMBER}
       - docker push registry.fsilva.me/api:1.0.${DRONE_BUILD_NUMBER}
+    secrets: [ REGISTRY_PASSWORD ]
 
   deploy-containers: 
     image: docker:17.04.0-ce
@@ -31,3 +32,4 @@ pipeline:
       - docker image prune -af
       - docker login --username=registry --password=${REGISTRY_PASSWORD} registry.fsilva.me
       - docker stack deploy --with-registry-auth -c stack.yml web
+    secrets: [ REGISTRY_PASSWORD ]
